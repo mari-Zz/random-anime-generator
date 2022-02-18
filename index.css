@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  background-color: hsl(0, 0%, 0%);
+  font-size: 100%;
+  font-family: "Wallpoet", cursive;
+}
+
+.container {
+  align-items: center;
+  color: hsl(0, 1%, 45%);
+  font-size: 2rem;
+  margin: 3rem;
+}
+
+.inputName {
+  width: 30rem;
+  font-size: 1.5rem;
+  font-family: "Wallpoet", cursive;
+  padding: 0.5rem;
+  color: hsl(0, 1%, 45%);
+  margin: 1.5rem 0;
+  background-color: black;
+  border: 1px solid hsl(0, 1%, 45%);
+  border-radius: 0.5rem;
+  display: none;
+  caret-color: hsl(0, 1%, 45%);
+}
+
+#generate {
+  display: none;
+  background-color: black;
+  border-inline-color: none;
+  outline: none;
+  border: 1px solid hsl(0, 1%, 45%);
+  border-radius: 0.5rem;
+  color: hsl(0, 1%, 45%);
+  font-family: "Wallpoet", cursive;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 1.5rem 0rem;
+}
+
+#generate:hover {
+  background-color: hsl(0, 1%, 45%);
+  color: white;
+  box-shadow: 0px 0px 20px white;
+}
