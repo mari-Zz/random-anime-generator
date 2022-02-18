@@ -53,7 +53,7 @@ body {
   font-family: "Wallpoet", cursive;
   font-size: 1.5rem;
   padding: 0.5rem;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   align-self: center;
 }
 
@@ -61,4 +61,40 @@ body {
   background-color: hsl(0, 1%, 45%);
   color: white;
   box-shadow: 0px 0px 15px white;
+}
+
+.card {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 16rem;
+  height: 22rem;
+  padding: 1rem;
+  border: 1px solid hsl(0, 1%, 45%);
+  border-radius: 0.5rem;
+}
+
+.img {
+  width: 16rem;
+  height: 18rem;
+  border-radius: 0.5rem;
+}
+
+.img img {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  width: 16rem;
+  height: 3rem;
+  align-items: middle;
+  color: hsl(0, 1%, 45%);
 }
