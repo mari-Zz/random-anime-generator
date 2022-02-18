@@ -3,7 +3,7 @@ const answerDiv = document.querySelector("#answer");
 const humanName = document.querySelector(".inputName");
 const button = document.querySelector("#generate");
 
-const imageElement = document.querySelector(".img");
+const imageElement = document.querySelector("#image");
 const titleElement = document.querySelector(".title");
 const card = document.querySelector(".card");
 
@@ -29,7 +29,7 @@ function greet() {
 greet();
 
 humanName.addEventListener("keydown", (event) => {
-  const answer = `Hello ${humanName.value}, generate random anime to watch!`;
+  const answer = `Hello ${humanName.value}, here's Anime recomendation for you!`;
   if (event.which === 13) {
     typewriter(answerDiv, answer, 0, button);
     humanName.disabled = true;
@@ -37,17 +37,15 @@ humanName.addEventListener("keydown", (event) => {
 });
 
 button.addEventListener("click", async () => {
-  let i = Math.floor(Math.random() * (154 - 0 + 1) + 0);
-  const data = await fetch(`https://api.jikan.moe/v4/anime/1/recommendations`);
+  let i = Math.floor(Math.random() * (100 - 0 + 1) + 0);
+  let j = Math.random() >= 0.5 ? 1 : 0;
+  const data = await fetch(`https://api.jikan.moe/v4/recommendations/anime`);
   const animes = await data.json();
-  const anime = animes.data[i].entry;
-  console.log(anime);
 
-  const img = document.createElement("img");
-  img.setAttribute("src", anime.images.jpg.image_url);
-  imageElement.appendChild(img);
+  const anime = animes.data[i].entry[j];
+
+  imageElement.setAttribute("src", anime.images.jpg.image_url);
 
   titleElement.innerHTML = anime.title;
   card.style.display = "flex";
-  button.disabled = true;
 });

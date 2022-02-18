@@ -30,14 +30,14 @@ body {
   text-align: center;
   font-family: "Wallpoet", cursive;
   padding: 0.5rem;
-  color: hsl(0, 1%, 45%);
-  outline-color: hsl(0, 1%, 45%);
+  color: hsl(211, 15%, 33%);
+  outline-color: hsl(211, 15%, 33%);
   margin: 1.5rem 0;
   background-color: black;
-  border: 1px solid hsl(0, 1%, 45%);
+  border: 1px solid hsl(211, 15%, 33%);
   border-radius: 0.5rem;
   display: none;
-  caret-color: hsl(0, 1%, 45%);
+  caret-color: hsl(211, 15%, 33%);
 }
 
 #generate {
@@ -47,9 +47,9 @@ body {
   background-color: black;
   border-inline-color: none;
   outline: none;
-  border: 1px solid hsl(0, 1%, 45%);
+  border: 1px solid hsl(211, 15%, 33%);
   border-radius: 0.5rem;
-  color: hsl(0, 1%, 45%);
+  color: hsl(211, 15%, 33%);
   font-family: "Wallpoet", cursive;
   font-size: 1.5rem;
   padding: 0.5rem;
@@ -58,7 +58,7 @@ body {
 }
 
 #generate:hover {
-  background-color: hsl(0, 1%, 45%);
+  background-color: hsl(211, 15%, 33%);
   color: white;
   box-shadow: 0px 0px 15px white;
 }
@@ -71,7 +71,12 @@ body {
   width: 16rem;
   height: 22rem;
   padding: 1rem;
-  border: 1px solid hsl(0, 1%, 45%);
+  background-color: hsl(211, 15%, 33%);
+  background-image: linear-gradient(
+    315deg,
+    hsl(211, 15%, 33%) 0%,
+    hsl(212, 19%, 19%) 74%
+  );
   border-radius: 0.5rem;
 }
 
@@ -93,9 +98,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   width: 16rem;
   height: 3rem;
-  align-items: middle;
-  color: hsl(0, 1%, 45%);
+  color: hsl(0, 0%, 100%);
 }
