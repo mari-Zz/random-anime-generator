@@ -18,7 +18,7 @@ function typewriter(div, sentence, i, element) {
       element.style.display = "block";
       element.focus();
     }
-  }, 100);
+  }, 60);
 }
 
 function greet() {
@@ -36,16 +36,23 @@ humanName.addEventListener("keydown", (event) => {
   }
 });
 
+function animation() {
+  let tl = gsap.timeline();
+
+  tl.fromTo(".card", { opacity: 0, y: 20, duration: 2 }, { opacity: 1, y: 0 });
+  tl.fromTo(".img", { opacity: 0, y: 20, duration: 1 }, { opacity: 1, y: 0 });
+  tl.fromTo(".title", { opacity: 0, y: 20, duration: 1 }, { opacity: 1, y: 0 });
+}
+
 button.addEventListener("click", async () => {
   let i = Math.floor(Math.random() * (100 - 0 + 1) + 0);
   let j = Math.random() >= 0.5 ? 1 : 0;
   const data = await fetch(`https://api.jikan.moe/v4/recommendations/anime`);
   const animes = await data.json();
-
   const anime = animes.data[i].entry[j];
 
   imageElement.setAttribute("src", anime.images.jpg.image_url);
-
   titleElement.innerHTML = anime.title;
+  animation();
   card.style.display = "flex";
 });
