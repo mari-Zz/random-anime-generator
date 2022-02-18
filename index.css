@@ -1,4 +1,8 @@
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   background-color: hsl(0, 0%, 0%);
   font-size: 100%;
@@ -6,18 +10,28 @@ body {
 }
 
 .container {
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 55%;
   color: hsl(0, 1%, 45%);
   font-size: 2rem;
-  margin: 3rem;
+  margin: 3rem 0;
+}
+
+#greeting,
+#answer {
+  align-self: left;
 }
 
 .inputName {
-  width: 30rem;
+  width: 25rem;
+  align-self: center;
   font-size: 1.5rem;
+  text-align: center;
   font-family: "Wallpoet", cursive;
   padding: 0.5rem;
   color: hsl(0, 1%, 45%);
+  outline-color: hsl(0, 1%, 45%);
   margin: 1.5rem 0;
   background-color: black;
   border: 1px solid hsl(0, 1%, 45%);
@@ -27,7 +41,9 @@ body {
 }
 
 #generate {
+  width: 25rem;
   display: none;
+  cursor: pointer;
   background-color: black;
   border-inline-color: none;
   outline: none;
@@ -37,11 +53,12 @@ body {
   font-family: "Wallpoet", cursive;
   font-size: 1.5rem;
   padding: 0.5rem;
-  margin: 1.5rem 0rem;
+  margin: 1.5rem 0;
+  align-self: center;
 }
 
 #generate:hover {
   background-color: hsl(0, 1%, 45%);
   color: white;
-  box-shadow: 0px 0px 20px white;
+  box-shadow: 0px 0px 15px white;
 }

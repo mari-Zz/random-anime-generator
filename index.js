@@ -24,7 +24,7 @@ function greet() {
 
 function input() {
   humanName.addEventListener("keydown", (event) => {
-    const answer = `Hello ${humanName.value}, this is gonna be your anime character!`;
+    const answer = `Hello ${humanName.value}, generate your anime character!`;
     if (event.which === 13) {
       typewriter(answerDiv, answer, 0, button);
       humanName.disabled = true;
