@@ -17,7 +17,7 @@ function typewriter(div, sentence, i, element) {
       typewriter(div, sentence, i, element);
     }
     if (i === sentence.length) {
-      element.style.display = "block";
+      element.style.display = "flex";
       element.focus();
     }
   }, 60);
@@ -39,13 +39,13 @@ humanName.addEventListener("keydown", (event) => {
 });
 
 async function genreButtons() {
-  const data = await fetch(`https://api.jikan.moe/v4/genres/anime`);
+  const data = await fetch(`https://api.aniapi.com/v1/resources/1.0/0`);
   const result = await data.json();
-  const genres = result.data;
+  const genres = result.data.genres;
   genres.forEach((genre) => {
     let option = document.createElement("option");
-    option.setAttribute("value", genre.mal_id);
-    option.innerHTML = genre.name;
+    option.setAttribute("value", genre);
+    option.innerHTML = genre;
     selectElement.appendChild(option);
   });
 }
@@ -60,25 +60,18 @@ function animation() {
 }
 
 button.addEventListener("click", async () => {
-  let i = Math.floor(Math.random() * (25 - 0 + 1) + 0);
+  let i = Math.floor(Math.random() * (100 - 0 + 1) + 0);
   let selectedGenre = selectElement.value;
   const data = await fetch(
-    `https://api.jikan.moe/v4/anime?genres=${selectedGenre}`
+    `https://api.aniapi.com/v1/anime?genres=${selectedGenre}`
   );
   const animes = await data.json();
-  const anime = animes.data[i];
+  const anime = animes.data.documents[i];
 
-  imageElement.setAttribute("src", anime.images.jpg.image_url);
-  titleElement.innerHTML = anime.title;
+  imageElement.setAttribute("src", anime.cover_image);
+  titleElement.innerHTML =
+    anime.titles.en !== null ? anime.titles.en : anime.titles.rj;
   animation();
   card.style.display = "flex";
+  console.log(anime);
 });
-
-async function fetchTedt() {
-  const data = await fetch("https://animechan.vercel.app/api/available/anime");
-  const result = await data.json();
-
-  console.log(result);
-}
-
-fetchTedt();
