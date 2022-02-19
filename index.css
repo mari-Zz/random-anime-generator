@@ -42,7 +42,6 @@ body {
 
 #generate {
   width: 25rem;
-  display: none;
   cursor: pointer;
   background-color: black;
   border-inline-color: none;
@@ -102,4 +101,24 @@ body {
   width: 16rem;
   height: 3rem;
   color: hsl(0, 0%, 100%);
+}
+
+.genres {
+  align-self: center;
+  display: none;
+}
+
+#genres {
+  width: fit-content;
+  text-align: center;
+  background-color: black;
+  border-inline-color: none;
+  outline: none;
+  border: 1px solid hsl(211, 15%, 33%);
+  border-radius: 0.5rem;
+  color: hsl(211, 15%, 33%);
+  font-family: "Wallpoet", cursive;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
 }
