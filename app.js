@@ -38,7 +38,7 @@ humanName.addEventListener("keydown", (event) => {
   }
 });
 
-async function genreButtons() {
+async function genreSelect() {
   const data = await fetch(`https://api.aniapi.com/v1/resources/1.0/0`);
   const result = await data.json();
   const genres = result.data.genres;
@@ -50,7 +50,7 @@ async function genreButtons() {
   });
 }
 
-genreButtons();
+genreSelect();
 
 function animation() {
   let tl = gsap.timeline();
@@ -66,12 +66,15 @@ button.addEventListener("click", async () => {
     `https://api.aniapi.com/v1/anime?genres=${selectedGenre}`
   );
   const animes = await data.json();
-  const anime = animes.data.documents[i];
 
-  imageElement.setAttribute("src", anime.cover_image);
-  titleElement.innerHTML =
-    anime.titles.en !== null ? anime.titles.en : anime.titles.rj;
-  animation();
-  card.style.display = "flex";
-  console.log(anime);
+  if (animes.status_code === 404) {
+    alert("there is no anime in this genre");
+  } else {
+    const anime = animes.data.documents[i];
+    imageElement.setAttribute("src", anime.cover_image);
+    titleElement.innerHTML =
+      anime.titles.en !== null ? anime.titles.en : anime.titles.rj;
+    animation();
+    card.style.display = "flex";
+  }
 });
