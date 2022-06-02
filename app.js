@@ -39,13 +39,20 @@ humanName.addEventListener("keydown", (event) => {
 });
 
 async function genreSelect() {
-  const data = await fetch(`https://api.aniapi.com/v1/resources/1.0/0`);
+  const data = await fetch(`https://api.jikan.moe/v4/genres/anime`);
   const result = await data.json();
-  const genres = result.data.genres;
-  genres.forEach((genre) => {
+  const genres = result.data;
+  let uniqueGenres = [];
+  genres.forEach((item) => {
+    if (!(item.mal_id in uniqueGenres.map((item) => item.mal_id))) {
+      uniqueGenres.push(item);
+    }
+  });
+
+  uniqueGenres.forEach((genre) => {
     let option = document.createElement("option");
-    option.setAttribute("value", genre);
-    option.innerHTML = genre;
+    option.setAttribute("value", genre.mal_id);
+    option.innerHTML = genre.name;
     selectElement.appendChild(option);
   });
 }
@@ -60,21 +67,17 @@ function animation() {
 }
 
 button.addEventListener("click", async () => {
-  let i = Math.floor(Math.random() * (100 - 0 + 1) + 0);
   let selectedGenre = selectElement.value;
-  const data = await fetch(
-    `https://api.aniapi.com/v1/anime?genres=${selectedGenre}`
+  const result = await fetch(
+    `https://api.jikan.moe/v4/anime?sort=desc&order_by=score&type=tv|movie&genres=${selectedGenre}`
   );
-  const animes = await data.json();
-
-  if (animes.status_code === 404) {
-    alert("there is no anime in this genre");
-  } else {
-    const anime = animes.data.documents[i];
-    imageElement.setAttribute("src", anime.cover_image);
-    titleElement.innerHTML =
-      anime.titles.en !== null ? anime.titles.en : anime.titles.rj;
-    animation();
-    card.style.display = "flex";
-  }
+  const animes = await result.json();
+  const itemCount = animes.data.length;
+  let i = Math.floor(Math.random() * itemCount);
+  const anime = animes.data[i];
+  console.log(i);
+  imageElement.setAttribute("src", anime.images.jpg.image_url);
+  titleElement.innerHTML = anime.title;
+  animation();
+  card.style.display = "flex";
 });
